@@ -1,7 +1,9 @@
--- SQL to create profiles table in Supabase (Postgres)
--- Run in Supabase SQL editor or psql
+-- sql/create_profiles.sql
+-- Creates the public.profiles table used by the frontend.
 
-CREATE TABLE public.profiles (
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+CREATE TABLE IF NOT EXISTS public.profiles (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   prenom text,
   photo_url text,
@@ -17,5 +19,3 @@ CREATE TABLE public.profiles (
   created_at timestamptz DEFAULT now(),
   verified boolean DEFAULT false
 );
-
--- Note: gen_random_uuid() requires the pgcrypto extension in some setups; alternatively use uuid_generate_v4() if extension uuid-ossp is enabled.
