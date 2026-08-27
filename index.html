@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trouvez facilement votre aide ménagère près de chez vous — MénageFacile</title>
+  <meta name="description" content="MénageFacile — Trouvez une aide ménagère près de chez vous. Recherche par ville, code postal et type de service. Contact direct par téléphone ou WhatsApp." />
+  <meta name="keywords" content="femme de ménage,aide ménagère,ménage à domicile,ménage chez particulier,femme de ménage près de chez moi,ménage Paris" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="MénageFacile" class="logo" />
+        <h1 class="site-name">MénageFacile</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="search.html">Rechercher</a>
+        <a href="create.html" class="btn primary">Proposer mes services</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <h2>Trouvez facilement votre aide ménagère près de chez vous</h2>
+      <form id="quick-search" class="search-form">
+        <input name="ville" id="ville" placeholder="Ville (ex: Paris)" />
+        <input name="cp" id="cp" placeholder="Code postal (ex: 75001)" />
+        <select name="type" id="type">
+          <option value="">Type de service</option>
+          <option value="ménage régulier">Ménage régulier</option>
+          <option value="ménage ponctuel">Ménage ponctuel</option>
+          <option value="grand nettoyage">Grand nettoyage</option>
+          <option value="repassage">Repassage</option>
+        </select>
+        <button class="btn primary" id="search-btn">Rechercher</button>
+      </form>
+      <p class="how-it-works">Rapide : recherchez, consultez les profils et contactez directement par téléphone ou WhatsApp.</p>
+    </section>
+
+    <section>
+      <h3>Dernières annonces</h3>
+      <div id="latest-list" class="cards-grid"></div>
+    </section>
+
+    <section class="info-cards">
+      <div class="card">
+        <h4>Simple</h4>
+        <p>Pas de messagerie interne — contact direct via téléphone ou WhatsApp.</p>
+      </div>
+      <div class="card">
+        <h4>Sûr</h4>
+        <p>Profils visibles, coordonnées claires. Vérification à venir (future version).</p>
+      </div>
+      <div class="card">
+        <h4>Mobile-first</h4>
+        <p>Design pensé d'abord pour mobile, rapide et ergonomique.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> MénageFacile — Plateforme de mise en relation. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('quick-search').addEventListener('submit', function(e){
+      e.preventDefault();
+      const ville = document.getElementById('ville').value;
+      const cp = document.getElementById('cp').value;
+      const type = document.getElementById('type').value;
+      const q = new URLSearchParams();
+      if (ville) q.set('ville', ville);
+      if (cp) q.set('cp', cp);
+      if (type) q.set('type', type);
+      window.location = 'search.html?' + q.toString();
+    });
+    loadLatestProfiles('latest-list', 6);
+  </script>
+</body>
+</html>

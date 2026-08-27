@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profil — MénageFacile</title>
+  <meta name="description" content="Profil du prestataire — contactez-le directement par téléphone ou WhatsApp." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="MénageFacile" class="logo" />
+        <h1 class="site-name">MénageFacile</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="search.html">Rechercher</a>
+        <a href="create.html" class="btn primary">Proposer mes services</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="profile-container"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> MénageFacile</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+    if (!id) {
+      document.getElementById('profile-container').innerHTML = '<p>Profil non trouvé.</p>';
+    } else {
+      renderProfileById(id, 'profile-container');
+    }
+  </script>
+</body>
+</html>

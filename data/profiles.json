@@ -1,0 +1,47 @@
+[
+  {
+    "id": "P-001",
+    "prenom": "Sophie",
+    "photo": "assets/sophie.svg",
+    "ville": "Paris",
+    "cp": "75010",
+    "phone": "+33123456789",
+    "whatsapp": "33612345678",
+    "desc": "Expérimentée, fiable, ménage complet chez les particuliers. Références sur demande.",
+    "services": "ménage régulier, repassage, grand nettoyage",
+    "tarif": 20,
+    "dispo": "lundi-vendredi matin",
+    "experience": "6 ans",
+    "createdAt": 1688000000000
+  },
+  {
+    "id": "P-002",
+    "prenom": "Karim",
+    "photo": "assets/karim.svg",
+    "ville": "Lyon",
+    "cp": "69003",
+    "phone": "+33498765432",
+    "whatsapp": "33698765432",
+    "desc": "Rapide et efficace pour les ménages ponctuels et remises en état.",
+    "services": "ménage ponctuel, nettoyage après déménagement",
+    "tarif": 18,
+    "dispo": "weekend",
+    "experience": "3 ans",
+    "createdAt": 1688100000000
+  },
+  {
+    "id": "P-003",
+    "prenom": "Marie",
+    "photo": "assets/marie.svg",
+    "ville": "Marseille",
+    "cp": "13001",
+    "phone": "+33411122334",
+    "whatsapp": "33611122334",
+    "desc": "Spécialiste vitres et repassage, très soigneuse.",
+    "services": "nettoyage de vitres, repassage",
+    "tarif": 22,
+    "dispo": "soirs",
+    "experience": "8 ans",
+    "createdAt": 1688200000000
+  }
+]

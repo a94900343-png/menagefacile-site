@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Proposer mes services — MénageFacile</title>
+  <meta name="description" content="Déposez votre annonce de services de ménage. Le contact se fera directement via téléphone ou WhatsApp." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="MénageFacile" class="logo" />
+        <h1 class="site-name">MénageFacile</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="search.html">Rechercher</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Proposer mes services</h2>
+      <form id="create-form" class="create-form">
+        <label>Prénom<input id="c-prenom" required /></label>
+        <label>Photo (URL) <input id="c-photo" placeholder="https://..." /></label>
+        <label>Ville <input id="c-ville" required /></label>
+        <label>Code postal <input id="c-cp" required /></label>
+        <label>Téléphone (international) <input id="c-phone" placeholder="+33..." required /></label>
+        <label>Numéro WhatsApp (sans espaces, ex: 33612345678) <input id="c-whatsapp" placeholder="33612345678" required /></label>
+        <label>Description <textarea id="c-desc" required></textarea></label>
+        <label>Services proposés <input id="c-services" placeholder="ménage régulier, repassage" required /></label>
+        <label>Tarif horaire (€) <input id="c-tarif" type="number" min="0" required /></label>
+        <label>Disponibilités <input id="c-dispo" placeholder="ex: lundi-vendredi matin, weekends" /></label>
+        <label>Expérience <input id="c-exp" placeholder="ex: 5 ans" /></label>
+
+        <button class="btn primary" type="submit">Publier</button>
+      </form>
+      <div id="create-msg" class="muted"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year'></span> MénageFacile</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('create-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      createProfileFromForm().then(result => {
+        document.getElementById('create-msg').textContent = 'Votre annonce a été enregistrée (local). Vous êtes redirigé(e)...';
+        setTimeout(()=> {
+          window.location = 'profile.html?id=' + result.id;
+        }, 900);
+      }).catch(err => {
+        document.getElementById('create-msg').textContent = 'Erreur : ' + err.message;
+      });
+    });
+  </script>
+</body>
+</html>

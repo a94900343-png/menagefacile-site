@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recherche — MénageFacile</title>
+  <meta name="description" content="Recherchez une aide ménagère par ville, code postal, type de service, tarif et disponibilité." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="MénageFacile" class="logo" />
+        <h1 class="site-name">MénageFacile</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="search.html">Rechercher</a>
+        <a href="create.html" class="btn primary">Proposer mes services</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Recherche de prestataires</h2>
+      <form id="filter-form" class="filters">
+        <input id="f-ville" placeholder="Ville" />
+        <input id="f-cp" placeholder="Code postal" />
+        <select id="f-type">
+          <option value="">Tous les types</option>
+          <option value="ménage régulier">Ménage régulier</option>
+          <option value="ménage ponctuel">Ménage ponctuel</option>
+          <option value="grand nettoyage">Grand nettoyage</option>
+          <option value="repassage">Repassage</option>
+          <option value="vitres">Nettoyage de vitres</option>
+        </select>
+        <input id="f-tarif" placeholder="Tarif max €/h" type="number" min="0" />
+        <select id="f-dispo">
+          <option value="">Disponibilité</option>
+          <option value="immediat">Immédiate</option>
+          <option value="weekend">Week-end</option>
+          <option value="soirs">Soirs</option>
+        </select>
+        <button class="btn primary" id="btn-filter">Filtrer</button>
+      </form>
+    </section>
+
+    <section>
+      <div id="results" class="cards-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> MénageFacile</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // read query params and prefill filters
+    const params = new URLSearchParams(location.search);
+    if (params.get('ville')) document.getElementById('f-ville').value = params.get('ville');
+    if (params.get('cp')) document.getElementById('f-cp').value = params.get('cp');
+    if (params.get('type')) document.getElementById('f-type').value = params.get('type');
+
+    document.getElementById('filter-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      applyFilters();
+    });
+
+    applyFilters(); // initial load
+  </script>
+</body>
+</html>
