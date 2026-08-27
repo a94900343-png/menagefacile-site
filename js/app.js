@@ -88,7 +88,9 @@ async function renderProfileById(id, containerId){
   }
   const photo = p.photo || 'assets/avatar-placeholder.svg';
   const tarif = formatPrice(p.tarif);
-  const whatsappHref = p.whatsapp ? `https://wa.me/${p.whatsapp}` : null;
+  // pre-fill WhatsApp message for convenience
+  const defaultMsg = `Bonjour ${p.prenom}, je suis intéressé(e) par vos services de ${p.services || 'ménage'}. Pouvez-vous me dire vos disponibilités ?`;
+  const whatsappHref = p.whatsapp ? `https://wa.me/${p.whatsapp}?text=${encodeURIComponent(defaultMsg)}` : null;
   const phoneHref = p.phone ? `tel:${p.phone}` : null;
 
   cont.innerHTML = `

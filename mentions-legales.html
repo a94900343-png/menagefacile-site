@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mentions légales — MénageFacile</title>
+  <meta name="description" content="Mentions légales de MénageFacile." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="MénageFacile" class="logo" />
+        <h1 class="site-name">MénageFacile</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="search.html">Rechercher</a>
+        <a href="create.html" class="btn primary">Proposer mes services</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Mentions légales</h2>
+      <p>Ce site est un prototype fourni à titre de démonstration. Informations de contact de l'éditeur (à compléter) :</p>
+      <ul>
+        <li>Éditeur : MénageFacile</li>
+        <li>Adresse : À compléter</li>
+        <li>Email : À compléter</li>
+      </ul>
+      <p>Le site permet la mise en relation entre particuliers et prestataires de services de ménage. Les coordonnées des prestataires sont affichées telles que fournies par les utilisateurs. Le site ne vérifie pas automatiquement l'identité des prestataires dans cette version.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> MénageFacile</p>
+      <p class="small"><a href="privacy.html">Politique de confidentialité</a></p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -36,6 +36,7 @@
         <label>Tarif horaire (€) <input id="c-tarif" type="number" min="0" required /></label>
         <label>Disponibilités <input id="c-dispo" placeholder="ex: lundi-vendredi matin, weekends" /></label>
         <label>Expérience <input id="c-exp" placeholder="ex: 5 ans" /></label>
+        <label style="font-size:14px;margin-top:8px;"><input type="checkbox" id="c-consent" required /> J'accepte que mes coordonnées soient publiées sur le site et utilisées pour être contacté(e). <a href="privacy.html">En savoir plus</a></label>
 
         <button class="btn primary" type="submit">Publier</button>
       </form>
@@ -46,6 +47,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>&copy; <span id="year'></span> MénageFacile</p>
+      <p class="small"><a href="mentions-legales.html">Mentions légales</a> · <a href="privacy.html">Politique de confidentialité</a></p>
     </div>
   </footer>
 
@@ -54,6 +56,17 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('create-form').addEventListener('submit', function(e){
       e.preventDefault();
+      // simple client-side validation
+      const phone = document.getElementById('c-phone').value.trim();
+      const whatsapp = document.getElementById('c-whatsapp').value.trim();
+      const consent = document.getElementById('c-consent').checked;
+      const msgEl = document.getElementById('create-msg');
+      if(!consent){ msgEl.textContent = 'Vous devez accepter la publication de vos coordonnées.'; return; }
+      const phoneRegex = /^\+?[0-9 \-]{6,20}$/;
+      const waRegex = /^[0-9]{6,15}$/;
+      if(!phoneRegex.test(phone)){ msgEl.textContent = 'Numéro de téléphone invalide. Utilisez le format international, ex: +33612345678'; return; }
+      if(!waRegex.test(whatsapp)){ msgEl.textContent = 'Numéro WhatsApp invalide. Entrez uniquement les chiffres (ex: 33612345678).'; return; }
+
       createProfileFromForm().then(result => {
         document.getElementById('create-msg').textContent = 'Votre annonce a été enregistrée (local). Vous êtes redirigé(e)...';
         setTimeout(()=> {

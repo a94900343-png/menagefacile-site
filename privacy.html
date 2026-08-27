@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Politique de confidentialité — MénageFacile</title>
+  <meta name="description" content="Politique de confidentialité de MénageFacile." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="MénageFacile" class="logo" />
+        <h1 class="site-name">MénageFacile</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="search.html">Rechercher</a>
+        <a href="create.html" class="btn primary">Proposer mes services</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Politique de confidentialité</h2>
+      <p>Dans la version actuelle (prototype), les données saisies via le formulaire sont enregistrées localement dans votre navigateur (localStorage) et ne sont pas transmises à un serveur. Si vous publiez une annonce, vos coordonnées seront visibles sur la page de votre profil.</p>
+      <h3>Données collectées</h3>
+      <ul>
+        <li>Prénom, photo, ville, code postal</li>
+        <li>Numéro de téléphone et numéro WhatsApp</li>
+        <li>Description des services, tarif, disponibilités, expérience</li>
+      </ul>
+      <h3>Utilisation</h3>
+      <p>Les coordonnées sont utilisées pour permettre aux visiteurs de contacter directement le prestataire par téléphone ou WhatsApp. Dans une future version, les données seront stockées sur un serveur et nous mettrons en place des outils de modération et de vérification.</p>
+      <h3>Vos droits</h3>
+      <p>Vous pouvez demander la suppression de vos données en contactant l'éditeur (email à renseigner). Dans la version finale, un mécanisme de suppression automatique sera disponible.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> MénageFacile</p>
+      <p class="small"><a href="mentions-legales.html">Mentions légales</a></p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
